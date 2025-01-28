@@ -7,7 +7,11 @@ export default function Home() {
     <View style={styles.container}>
       <Text style={styles.title}>Nome do Evento</Text>
       <Text style={styles.subtitle}>Sexta, 4 de Novembro de 2022.</Text>
-      <Link href={'/test'}>ir para rota test</Link>
+      <Link
+        style={styles.link}
+        href="./test">
+        ir para rota test
+      </Link>
     </View>
   );
 }

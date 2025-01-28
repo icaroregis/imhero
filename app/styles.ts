@@ -16,4 +16,9 @@ export const styles = StyleSheet.create({
     color: '#6b6b6b',
     fontSize: 16,
   },
+  link: {
+    color: '#fdfcfe',
+    fontSize: 16,
+    marginTop: 24,
+  },
 });
