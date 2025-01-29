@@ -1,4 +1,3 @@
-import { styles } from '@/src/styles/home.styles';
 import { Link, router } from 'expo-router';
 import { Button, Text, View } from 'react-native';
 
@@ -8,11 +7,11 @@ export default function Home() {
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Nome do Evento</Text>
-      <Text style={styles.subtitle}>Sexta, 4 de Novembro de 2022.</Text>
+    <View className="flex flex-1 bg-[#131016] p-6">
+      <Text className="text-[24px] text-[#fdfcfe] font-bold mt-12">Nome do Evento</Text>
+      <Text className="text-[16px] text-[#6b6b6b]">Sexta, 4 de Novembro de 2022.</Text>
       <Link
-        style={styles.link}
+        className="text-[#fdfcfe] text-[16px] mt-24"
         href="./test">
         ir para rota test
       </Link>
