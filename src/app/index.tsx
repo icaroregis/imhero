@@ -1,10 +1,39 @@
 import AntDesign from '@expo/vector-icons/AntDesign';
-import { Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Alert, FlatList, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import Participant from '../components/Participant';
 
 export default function Home() {
+  const participants = [
+    'Ícaro Almeida',
+    'João da Silva',
+    'Maria Oliveira',
+    'Pedro Henrique',
+    'Ana Carolina',
+    'José Alves',
+    'Carlos Eduardo',
+    'Fernanda Souza',
+    'Ricardo Santos',
+    'Mayanderson Gomes',
+  ];
+
   function handleParticipantAdd() {
-    console.log('Adicionar participante');
+    if (participants.includes('Ícaro Almeida')) {
+      return Alert.alert('Atenção', 'Participante já adicionado.');
+    }
+  }
+
+  function handleParticipantRemove(name: string) {
+    Alert.alert('Atenção', `Deseja remover o participante ${name}?`, [
+      {
+        text: 'Sim',
+        style: 'destructive',
+        onPress: () => Alert.alert('Sucesso', `Participante ${name} removido com sucesso.`),
+      },
+      {
+        text: 'Não',
+        style: 'cancel',
+      },
+    ]);
   }
 
   return (
@@ -28,8 +57,25 @@ export default function Home() {
           />
         </TouchableOpacity>
       </View>
-      <Participant />
-      <Participant />
+
+      <FlatList
+        keyExtractor={(item) => item}
+        data={participants}
+        renderItem={({ item }) => (
+          <Participant
+            name={item}
+            onRemove={() => handleParticipantRemove(item)}
+          />
+        )}
+        showsVerticalScrollIndicator={false}
+        ListEmptyComponent={() => {
+          return (
+            <View className="flex items-center justify-center mt-12">
+              <Text className="text-[16px] text-[#6b6b6b]">Nenhum participante adicionado.</Text>
+            </View>
+          );
+        }}
+      />
     </View>
   );
 }
