@@ -1,5 +1,6 @@
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { Text, TextInput, TouchableOpacity, View } from 'react-native';
+import Participant from '../components/Participant';
 
 export default function Home() {
   function handleParticipantAdd() {
@@ -27,6 +28,8 @@ export default function Home() {
           />
         </TouchableOpacity>
       </View>
+      <Participant />
+      <Participant />
     </View>
   );
 }
