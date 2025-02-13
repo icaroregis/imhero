@@ -1,28 +1,28 @@
 import AntDesign from '@expo/vector-icons/AntDesign';
+import { useState } from 'react';
 import { Alert, FlatList, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import Participant from '../components/Participant';
 
 export default function Home() {
-  const participants = [
-    'Ícaro Almeida',
-    'João da Silva',
-    'Maria Oliveira',
-    'Pedro Henrique',
-    'Ana Carolina',
-    'José Alves',
-    'Carlos Eduardo',
-    'Fernanda Souza',
-    'Ricardo Santos',
-    'Mayanderson Gomes',
-  ];
+  const [participants, setParticipants] = useState<string[]>([]);
+  const [participantName, setParticipantName] = useState('');
 
   function handleParticipantAdd() {
-    if (participants.includes('Ícaro Almeida')) {
+    if (participants.includes(participantName)) {
       return Alert.alert('Atenção', 'Participante já adicionado.');
     }
+
+    setParticipants((prevState) => {
+      return [...prevState, participantName];
+    });
+    setParticipantName('');
   }
 
   function handleParticipantRemove(name: string) {
+    setParticipants((prevState) => {
+      return prevState.filter((participant) => participant !== name);
+    });
+
     Alert.alert('Atenção', `Deseja remover o participante ${name}?`, [
       {
         text: 'Sim',
@@ -46,6 +46,8 @@ export default function Home() {
           placeholder="Nome do Participante"
           placeholderTextColor={'#6b6b6b'}
           className="flex-1 h-[56px] bg-[#1f1e25] text-[#fff] p-4 rounded-md"
+          onChangeText={(text) => setParticipantName(text)}
+          value={participantName}
         />
         <TouchableOpacity
           className="w-[56px] h-[56px] rounded-[5px] bg-[#31cf67] flex justify-center items-center"
