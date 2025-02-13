@@ -12,6 +12,10 @@ export default function Home() {
       return Alert.alert('Atenção', 'Participante já adicionado.');
     }
 
+    if (participantName === '' || !participantName) {
+      return Alert.alert('Atenção', 'Informe o nome do participante.');
+    }
+
     setParticipants((prevState) => {
       return [...prevState, participantName];
     });
@@ -19,15 +23,16 @@ export default function Home() {
   }
 
   function handleParticipantRemove(name: string) {
-    setParticipants((prevState) => {
-      return prevState.filter((participant) => participant !== name);
-    });
-
     Alert.alert('Atenção', `Deseja remover o participante ${name}?`, [
       {
         text: 'Sim',
         style: 'destructive',
-        onPress: () => Alert.alert('Sucesso', `Participante ${name} removido com sucesso.`),
+        onPress: () => {
+          Alert.alert('Sucesso', `Participante ${name} removido com sucesso.`);
+          setParticipants((prevState) => {
+            return prevState.filter((participant) => participant !== name);
+          });
+        },
       },
       {
         text: 'Não',
