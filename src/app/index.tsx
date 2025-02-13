@@ -43,8 +43,8 @@ export default function Home() {
 
   return (
     <View className="flex flex-1 bg-[#131016] p-6">
-      <Text className="text-[24px] text-white font-bold mt-12">Nome do Evento</Text>
-      <Text className="text-[16px] text-[#6b6b6b]">Sexta, 4 de Novembro de 2022.</Text>
+      <Text className="text-[24px] text-white font-bold mt-12">Baile das Máscaras</Text>
+      <Text className="text-[16px] text-[#6b6b6b]">Sábado, 15 de Novembro de 2025.</Text>
       <View className="flex flex-row gap-4 mt-9 mb-11">
         <TextInput
           keyboardType="default"
